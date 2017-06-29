@@ -10,11 +10,18 @@ docker rm $(docker ps -a -q)           # Remove all containers from this machine
 docker images -a                               # Show all images on this machine
 docker rmi <imagename>            # Remove the specified image from this machine
 docker rmi $(docker images -q)             # Remove all images from this machine
-docker login             # Log in this CLI session using your Docker credentials
-docker commit <container_id>  <image_id>   # commit the container state to image
+docker login            # Log in this CLI session using your Docker credentials
+docker commit <container_id>  <image_id>      # commit the container state to image
 docker tag <image> username/repository:tag  # Tag <image> for upload to registry
 docker push username/repository:tag            # Upload tagged image to registry
 docker run username/repository:tag                   # Run image from a registry
+docker start -i –t <container-name> /bin/bash    # Opens a tty in interactive mode
+docker start –p –d <container-name>                    # Runs the container in daemon mode
+docker cp /root/file.txt docker-container:/root      # To copy a file from host to the docker container
+
+When logged into the docker container, Type Ctrl+p, Ctrl+q will help you to turn
+interactive mode to daemon mode – which will keep the container running as daemon.
+Use 'exit' to stop the container and come out to main console.
 
 To Update/Install softwares on Jenkins container:
  Use '-u root' in the docker run command        # Start the docker container as root:
@@ -26,6 +33,50 @@ docker exec <container_id>  apt-get install maven -y        # Install maven
 To create a stack
 docker stack ls              # List all running applications on this Docker host
 docker stack deploy -c <composefile> <appname>  # Run the specified Compose file
-docker stack services <appname>       # List the services associated with an app
+docker stack services <appname>       # List the services associated with an app 
 docker stack ps <appname>   # List the running containers associated with an app
 docker stack rm <appname>                             # Tear down an application
+
+##########################################################
+                      Dealing with Proxy (Ubuntu 14.04 LTS)
+##########################################################
+Usually even after setting proxy in the network settings and default browser,
+unless registering the SSL certificate, we get the error x509 certificate signed
+by unknown authority.
+
+Do the following to solve this:
+1. Add proxy entries in /etc/default/docker file
+    [2017-06-29 09:32:41] root@test01  /home/edureka $ cat /etc/default/docker
+    # Docker Upstart and SysVinit configuration file
+    #
+    # THIS FILE DOES NOT APPLY TO SYSTEMD
+    #
+    #   Please see the documentation for "systemd drop-ins":
+    #   https://docs.docker.com/engine/articles/systemd/
+    #
+    # Customize location of Docker binary (especially for development testing).
+    #DOCKERD="/usr/local/bin/dockerd"
+
+    # Use DOCKER_OPTS to modify the daemon startup options.
+    #DOCKER_OPTS="--dns 8.8.8.8 --dns 8.8.4.4"
+
+    # If you need Docker to use an HTTP proxy, it can also be specified here.
+    #export http_proxy="http://127.0.0.1:3128/"
+    export http_proxy="http://proxy-tvm.quest-global.com:8080"
+    export https_proxy="http://proxy-tvm.quest-global.com:8080"
+
+2. If using Dockerfile - Add the following lines at the top of your Dockerfile:
+    ENV http_proxy 'http://user:password@proxy-host:proxy-port'
+    ENV https_proxy 'http://user:password@proxy-host:proxy-port'
+    ENV HTTP_PROXY 'http://user:password@proxy-host:proxy-port'
+    ENV HTTPS_PROXY 'http://user:password@proxy-host:proxy-port'
+
+3. Convert the certificate file from .cer to .crt
+    openssl x509 -inform PEM -in PCAcert.cer -out PCAcert.crt
+
+4. Place the .crt file into /usr/share/ca-certificates/<mozilla>
+
+5. Run the command dpkg-reconfigure ca-certificates which will install
+the .pem format of the certificate into /etc/ssl/certs
+
+##########################################################
