@@ -4,7 +4,7 @@
 
 FROM ubuntu:latest
 
-MAINTAINER Ivan Krizsan, https://github.com/veersudhir83
+MAINTAINER Sudheer Veeravalli, https://github.com/veersudhir83
 
 ENV http_proxy 'http://proxy-tvm.quest-global.com:8080' 
 ENV https_proxy 'http://proxy-tvm.quest-global.com:8080'
