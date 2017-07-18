@@ -13,6 +13,7 @@ pipeline-stage-tags-metadata:1.1.8
 git-client:2.4.6
 run-condition:1.0
 pipeline-model-definition:1.1.8
+codacy-plugin-jenkins:1.0-SNAPSHOT (private-16218bdb-root)
 durable-task:1.14
 subversion:2.9
 external-monitor-job:1.7
@@ -75,6 +76,7 @@ pipeline-model-declarative-agent:1.1.1
 gradle:1.27.1
 email-ext:2.58
 build-timeout:1.18
+cloudfoundry:1.5
 ws-cleanup:0.33
 docker-workflow:1.12
 matrix-auth:1.7
@@ -83,7 +85,7 @@ scm-api:2.1.1
 workflow-cps-global-lib:2.8
 pipeline-model-extensions:1.1.8
 workflow-step-api:2.12
-parameterized-trigger:2.35
+parameterized-trigger:2.35.1
 display-url-api:2.0
 ssh-credentials:1.13
 pipeline-build-step:2.5.1
