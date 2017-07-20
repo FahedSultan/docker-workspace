@@ -124,11 +124,11 @@ $ docker stack ps <appname> --> List the running containers associated with an a
 $ docker stack rm <appname> --> Tear down an application 
 ``` 
  
-### Dealing with Proxy (Ubuntu 14.04 LTS) 
+### Dealing with Proxy - (Ubuntu / Any Linux system - path of the config may change - setting will be same) 
 Usually even after setting proxy in the network settings and default browser, unless registering the SSL certificate, we get the error x509 certificate signed by unknown authority.  
  
 Do the following to solve this: 
-Add proxy entries in /etc/default/docker file 
+> * Add proxy entries in **/etc/default/docker file**
 ```sh
 $ [2017-06-29 09:32:41] root@test01  /home/edureka $ cat /etc/default/docker  
   #Docker Upstart and SysVinit configuration file 
@@ -152,15 +152,13 @@ $ [2017-06-29 09:32:41] root@test01  /home/edureka $ cat /etc/default/docker
   ENV HTTP_PROXY 'http://user:password@proxy-host:proxy-port' 
   ENV HTTPS_PROXY 'http://user:password@proxy-host:proxy-port' 
  
-> * Convert the certificate file from .cer to .crt
-  
+> * Convert the certificate file from .cer to .crt  
 ```sh
 $ openssl x509 -inform PEM -in PCAcert.cer -out PCAcert.crt 
 ``` 
-> * Place the .crt file into /usr/share/ca-certificates/<mozilla> 
+> * Place the .crt file into **/usr/share/ca-certificates/<mozilla>**
  
-> * Run the below command which will install the .pem format of the certificate into /etc/ssl/certs
-
+> * Run the below command which will install the .pem format of the certificate into **/etc/ssl/certs**
 ```sh
 $ dpkg-reconfigure ca-certificates 
 ``` 
