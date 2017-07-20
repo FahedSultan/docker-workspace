@@ -106,7 +106,7 @@ Example: sudo usermod -aG docker ubuntu/ec2-user/jenkins/<whatever user>
 ```sh 
 $ docker run -p 9999:8080 -p 50000:50000 -v /home/<user_account>/docker-jenkinsvolume/jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -v $(which docker):/usr/bin/docker --name myjenkins veersudhir83/myjenkins:latest 
 ```
-Be sure to point the -v and -p switches to the right ports, volumes etc..
+**Important Note:** Be sure to point the -v and -p switches to the right ports, volumes etc..
 
 ## Using Docker Swarm to deploy an application
 ### Set up a Docker registry
@@ -118,7 +118,12 @@ $ docker service create --name <name_of_registry> --publish 5000:5000 registry:2
 ```sh
 $ docker service ls
 ```
-> * Create an application using a program, a Dockerfile, and docker-compose.yml
+> * Bring the registry down with
+```sh
+$ docker service rm <name_of_registry>
+```
+
+### Create an application using a program, a Dockerfile, and docker-compose.yml
 Refer to the sample code here [stackdemo]
 > * Test the app with Compose
 ```sh
