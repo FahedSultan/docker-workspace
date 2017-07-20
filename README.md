@@ -108,21 +108,63 @@ $ docker run -p 9999:8080 -p 50000:50000 -v /home/<user_account>/docker-jenkinsv
 ```
 Be sure to point the -v and -p switches to the right ports, volumes etc..
 
-### To create a stack 
+### Set up a Docker registry
+> * Start the registry as a service on your swarm:
 ```sh
-$ docker stack ls --> List all running applications on this Docker host
+$ docker service create --name <name_of_registry> --publish 5000:5000 registry:2
 ```
-```sh 
-$ docker stack deploy -c <composefile> <appname> --> Run the specified Compose file
+> * Check the status of registry service
+```sh
+$ docker service ls
 ```
-```sh 
-$ docker stack services <appname> --> List the services associated with an app
+> * Create an application using a program, a Dockerfile, and docker-compose.yml
+Refer to the sample code here [stackdemo]
+> * Test the app with Compose
+```sh
+$ docker-compose up -d
 ```
-```sh 
-$ docker stack ps <appname> --> List the running containers associated with an app
+> * Check that the app is running using below command
+```sh
+$ docker-compose ps
 ```
+You can test the app with curl: 
+```sh
+$ curl http://localhost:8000
+Hello World! I have been seen 1 times.
+```
+> * Once verified that app is up and running, you can bring this app down as this is not the way you want. You ultimately want to deploy this as a stack onto a docker swarm (with help of registry) which acts as a load balancer and help scaling up as per your needs.
+> * To bring down the app
+```sh
+$ docker-compose down --volumes
+```
+> * Push the generated image to the registry
+```sh
+docker-compose push
+```
+### Once the stack is ready, we will now deploy the stack to the swarm
+
+
+
+### To create a stack 
+> * List all stacks on the host
+```sh
+$ docker stack ls 
+```
+> * Deploy the stack using the compose file (Note: compose file may be using the Dockerfile in its structure which will create the necessary containers)
 ```sh 
-$ docker stack rm <appname> --> Tear down an application 
+$ docker stack deploy -c <composefile> <stack_name> 
+```
+> * List the services associated with the stack
+```sh 
+$ docker stack services <stack_name> 
+```
+> * List the services associated with the stack
+```sh 
+$ docker stack ps <appname>
+```
+> * Bring the stack down using
+```sh 
+$ docker stack rm <stack_name>
 ``` 
  
 ### Dealing with Proxy - (Ubuntu / Any Linux system - path of the config may change - setting will be same) 
@@ -168,4 +210,4 @@ $ dpkg-reconfigure ca-certificates
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen.)
 
-   [htaccesstool]: <http://www.htaccesstools.com/htpasswd-generator/>
+   [stackdemo]: <https://github.com/veersudhir83/docker-workspace/tree/master/stackdemo/>
