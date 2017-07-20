@@ -205,7 +205,7 @@ $ [2017-06-29 09:32:41] root@test01  /home/edureka $ cat /etc/default/docker
   export https_proxy="http://proxy-tvm.quest-global.com:8080" 
 ```
   
-> * If using Dockerfile - Add the following lines at the top of your Dockerfile: 
+> If using Dockerfile - Add the following lines at the top of your Dockerfile: 
 ```sh
   ENV http_proxy 'http://user:password@proxy-host:proxy-port' 
   ENV https_proxy 'http://user:password@proxy-host:proxy-port' 
