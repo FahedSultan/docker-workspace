@@ -1,6 +1,6 @@
 # All Docker commands listed for handy use
 
-### Plain docker commands 
+## Plain docker commands 
 ```sh 
 $ docker info --> Show info about the docker installed on the host machine 
 ```
