@@ -95,7 +95,7 @@ $ docker exec -it <container-name/id> /bin/bash --> Login to bash on the contain
 ### General Docker Instructions
 > * Docker containers, volumes etc.. will be available at **/var/lib/docker/** folder
 > * To Update/Install softwares on Jenkins container: 
-    Use '-u root' in the docker run command        # Start the docker container as root:  
+    Use **'-u root'** in the docker run command        # Start the docker container as root:  
 > * To run docker command without sudo, you need to add your user (who has root privileges) to docker group. For this run following command: 
 ```sh 
 $ sudo usermod -aG docker $USER
@@ -106,6 +106,7 @@ Example: sudo usermod -aG docker ubuntu/ec2-user/jenkins/<whatever user>
 ```sh 
 $ docker run -p 9999:8080 -p 50000:50000 -v /home/<user_account>/docker-jenkinsvolume/jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -v $(which docker):/usr/bin/docker --name myjenkins veersudhir83/myjenkins:latest 
 ```
+Be sure to point the -v and -p switches to the right ports, volumes etc..
 
 ### To create a stack 
 ```sh
@@ -156,7 +157,7 @@ $ [2017-06-29 09:32:41] root@test01  /home/edureka $ cat /etc/default/docker
 ```sh
 $ openssl x509 -inform PEM -in PCAcert.cer -out PCAcert.crt 
 ``` 
-> * Place the .crt file into **/usr/share/ca-certificates/<mozilla>**
+> * Place the .crt file into **/usr/share/ca-certificates/mozilla**
  
 > * Run the below command which will install the .pem format of the certificate into **/etc/ssl/certs**
 ```sh
