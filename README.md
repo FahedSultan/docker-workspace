@@ -102,6 +102,12 @@ $ docker exec -it <container-name/id> /bin/bash --> Login to bash on the contain
 $ sudo usermod -aG docker $USER
 Example: sudo usermod -aG docker ubuntu/ec2-user/jenkins/<whatever user> 
 ```
+> * Along with above **usermod** command, you may also have to give permission to the **/var/run/docker.sock** file on the host running the docker using
+```sh
+$ chmod 777 /var/run/docker.sock
+```
+Note: Instead of **777**, **ugo+x** may also be used in the above command to be more specific
+
    
 ## Commands to start/manage jenkins docker: 
 ```sh 
