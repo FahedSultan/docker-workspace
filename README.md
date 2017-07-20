@@ -1,12 +1,5 @@
 # All Docker commands listed for handy use
-### Instructions
-> * **Staticfile.auth** --> Contains user name and hashed password (generated from [htaccesstool])
-> * **Staticfile**      --> Defines the root directory of the content
 
-### Command to push
-```sh
-$ cf push
-```
 ### Plain docker commands 
 ```sh 
 $ docker info --> Show info about the docker installed on the host machine 
