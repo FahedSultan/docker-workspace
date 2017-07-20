@@ -115,7 +115,8 @@ $ docker run -p 8080:8080 -p 50000:50000 -v /home/<user_account>/docker-jenkinsv
 ```
 **Important Note:** Be sure to point the -v and -p switches to the right ports, volumes etc..
 
-## Using Docker Swarm to deploy an application - Reference Instructions at [swarmreference]
+## Using Docker Swarm to deploy an application 
+- Reference Instructions at [swarmreference]
 ### Set up a Docker registry
 > Start the registry as a service on your swarm:
 ```sh
