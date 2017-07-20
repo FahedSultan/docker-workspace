@@ -85,12 +85,13 @@ $ docker cp /root/file.txt docker-container:/root --> To copy a file from host t
 ```  
 ```sh 
 $ docker exec -it <container-name/id> /bin/bash --> Login to bash on the container file system 
-       **Example:** docker exec <container_id>  apt-get update --> Update repository 
-       **Example:** docker exec <container_id>  apt-get install ant -y --> Install ant 
-       **Example:** docker exec <container_id>  apt-get install maven -y --> Install maven 
-
-     When logged into the docker container, Type Ctrl+p, Ctrl+q will help you to turn interactive mode to daemon mode, which will keep the container running as daemon. Use 'exit' to stop the container and come out to main console. 
 ``` 
+     **Example:** docker exec <container_id>  apt-get update --> Update repository 
+     **Example:** docker exec <container_id>  apt-get install ant -y --> Install ant 
+     **Example:** docker exec <container_id>  apt-get install maven -y --> Install maven 
+
+     When logged into the docker container, Type **Ctrl+p**, **Ctrl+q** will help you to turn interactive mode to daemon mode, which will keep the container running as daemon. Use 'exit' to stop the container and come out to main console. 
+
 
 ## General Docker Instructions
 > * Docker containers, volumes etc.. will be available at **/var/lib/docker/** folder
