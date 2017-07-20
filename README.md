@@ -102,7 +102,7 @@ $ docker exec -it <container-name/id> /bin/bash --> Login to bash on the contain
 $ sudo usermod -aG docker $USER
 Example: sudo usermod -aG docker ubuntu/ec2-user/jenkins/<whatever user> 
 ```
-> * Along with above **usermod** command, you may also have to give permission to the **/var/run/docker.sock** file on the host running the docker using
+> Along with above **usermod** command, you may also have to give permission to the **/var/run/docker.sock** file on the host running the docker using
 ```sh
 $ chmod 777 /var/run/docker.sock
 ```
@@ -117,26 +117,26 @@ $ docker run -p 9999:8080 -p 50000:50000 -v /home/<user_account>/docker-jenkinsv
 
 ## Using Docker Swarm to deploy an application
 ### Set up a Docker registry
-> * Start the registry as a service on your swarm:
+> Start the registry as a service on your swarm:
 ```sh
 $ docker service create --name <name_of_registry> --publish 5000:5000 registry:2
 ```
-> * Check the status of registry service
+> Check the status of registry service
 ```sh
 $ docker service ls
 ```
-> * Bring the registry down with
+> Bring the registry down with
 ```sh
 $ docker service rm <name_of_registry>
 ```
 
 ### Create an application using a program, a Dockerfile, and docker-compose.yml
 Refer to the sample code here [stackdemo]
-> * Test the app with Compose
+> Test the app with Compose
 ```sh
 $ docker-compose up -d
 ```
-> * Check that the app is running using below command
+> Check that the app is running using below command
 ```sh
 $ docker-compose ps
 ```
@@ -150,22 +150,22 @@ Hello World! I have been seen 1 times.
 ```sh
 $ docker-compose down --volumes
 ```
-> * Push the generated image to the registry
+> Push the generated image to the registry
 ```sh
 docker-compose push
 ```
-> * Once the stack is ready, we will now deploy the stack to the swarm using below steps
+> Once the stack is ready, we will now deploy the stack to the swarm using below steps
 
 ### Create a stack 
-> * List all stacks on the host
+> List all stacks on the host
 ```sh
 $ docker stack ls 
 ```
-> * Deploy the stack using the compose file (Note: compose file may be using the Dockerfile in its structure which will create the necessary containers)
+> Deploy the stack using the compose file (Note: compose file may be using the Dockerfile in its structure which will create the necessary containers)
 ```sh 
 $ docker stack deploy -c <composefile> <stack_name> 
 ```
-> * List the services associated with the stack
+> List the services associated with the stack
 ```sh 
 $ docker stack services <stack_name> 
 ```
@@ -174,11 +174,11 @@ You can test the app with curl:
 $ curl http://localhost:8000
 Hello World! I have been seen 1 times.
 ```
-> * List the services associated with the stack
+> List the services associated with the stack
 ```sh 
 $ docker stack ps <appname>
 ```
-> * Bring the stack down using
+> Bring the stack down using
 ```sh 
 $ docker stack rm <stack_name>
 ``` 
@@ -187,7 +187,7 @@ $ docker stack rm <stack_name>
 Usually even after setting proxy in the network settings and default browser, unless registering the SSL certificate, we get the error x509 certificate signed by unknown authority.  
  
 Do the following to solve this: 
-> * Add proxy entries in **/etc/default/docker file**
+> Add proxy entries in **/etc/default/docker file**
 ```sh
 $ [2017-06-29 09:32:41] root@test01  /home/edureka $ cat /etc/default/docker  
   #Docker Upstart and SysVinit configuration file 
@@ -211,13 +211,13 @@ $ [2017-06-29 09:32:41] root@test01  /home/edureka $ cat /etc/default/docker
   ENV HTTP_PROXY 'http://user:password@proxy-host:proxy-port' 
   ENV HTTPS_PROXY 'http://user:password@proxy-host:proxy-port' 
  
-> * Convert the certificate file from .cer to .crt  
+> Convert the certificate file from .cer to .crt  
 ```sh
 $ openssl x509 -inform PEM -in PCAcert.cer -out PCAcert.crt 
 ``` 
-> * Place the .crt file into **/usr/share/ca-certificates/mozilla**
+> Place the .crt file into **/usr/share/ca-certificates/mozilla**
  
-> * Run the below command which will install the .pem format of the certificate into **/etc/ssl/certs**
+> Run the below command which will install the .pem format of the certificate into **/etc/ssl/certs**
 ```sh
 $ dpkg-reconfigure ca-certificates 
 ``` 
