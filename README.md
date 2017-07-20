@@ -92,7 +92,7 @@ $ docker exec -it <container-name/id> /bin/bash --> Login to bash on the contain
      When logged into the docker container, Type Ctrl+p, Ctrl+q will help you to turn interactive mode to daemon mode, which will keep the container running as daemon. Use 'exit' to stop the container and come out to main console. 
 ``` 
 
-### General Docker Instructions
+## General Docker Instructions
 > * Docker containers, volumes etc.. will be available at **/var/lib/docker/** folder
 > * To Update/Install softwares on Jenkins container: 
     Use **'-u root'** in the docker run command        # Start the docker container as root:  
@@ -102,12 +102,13 @@ $ sudo usermod -aG docker $USER
 Example: sudo usermod -aG docker ubuntu/ec2-user/jenkins/<whatever user> 
 ```
    
-### Commands to start/manage jenkins docker: 
+## Commands to start/manage jenkins docker: 
 ```sh 
 $ docker run -p 9999:8080 -p 50000:50000 -v /home/<user_account>/docker-jenkinsvolume/jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -v $(which docker):/usr/bin/docker --name myjenkins veersudhir83/myjenkins:latest 
 ```
 Be sure to point the -v and -p switches to the right ports, volumes etc..
 
+## Using Docker Swarm to deploy an application
 ### Set up a Docker registry
 > * Start the registry as a service on your swarm:
 ```sh
@@ -141,11 +142,9 @@ $ docker-compose down --volumes
 ```sh
 docker-compose push
 ```
-### Once the stack is ready, we will now deploy the stack to the swarm
+> * Once the stack is ready, we will now deploy the stack to the swarm using below steps
 
-
-
-### To create a stack 
+### Create a stack 
 > * List all stacks on the host
 ```sh
 $ docker stack ls 
@@ -158,6 +157,11 @@ $ docker stack deploy -c <composefile> <stack_name>
 ```sh 
 $ docker stack services <stack_name> 
 ```
+You can test the app with curl: 
+```sh
+$ curl http://localhost:8000
+Hello World! I have been seen 1 times.
+```
 > * List the services associated with the stack
 ```sh 
 $ docker stack ps <appname>
@@ -167,7 +171,7 @@ $ docker stack ps <appname>
 $ docker stack rm <stack_name>
 ``` 
  
-### Dealing with Proxy - (Ubuntu / Any Linux system - path of the config may change - setting will be same) 
+## Dealing with Proxy - (Ubuntu / Any Linux system - path of the config may change - setting will be same) 
 Usually even after setting proxy in the network settings and default browser, unless registering the SSL certificate, we get the error x509 certificate signed by unknown authority.  
  
 Do the following to solve this: 
