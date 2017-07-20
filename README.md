@@ -223,9 +223,8 @@ $ openssl x509 -inform PEM -in PCAcert.cer -out PCAcert.crt
 ```sh
 $ dpkg-reconfigure ca-certificates 
 ``` 
-########################################################## 
 # Solutions to some problems using Docker-inside-Docker (Dind)
-> * When you face an issue using accessing host docker instance within the jenkins (running as a docker container on the same host) as below 
+> When you face an issue using accessing host docker instance within the jenkins (running as a docker container on the same host) as below 
     docker: error while loading shared libraries: libltdl.so.7: cannot open shared object file: No such file or directory
 Solution:
 1. Run the below command on both host and the docker container
@@ -233,23 +232,24 @@ Solution:
 $ ldd $(which docker)
 ```
 In the Jenkins (inside docker), You may get an output as below saying some of the linked libraries not found
+```sh
         linux-vdso.so.1 (0x00007ffd27160000)
         libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007fa89f9e0000)
         libltdl.so.7 => not found
         libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fa89f641000)
         /lib64/ld-linux-x86-64.so.2 (0x000055cdefdb1000)
+```
 Where as the same command on the host running docker which not yield any errors and shows the necessary file. 
 ```sh
-$ ldd $(which docker)
-```
         linux-vdso.so.1 =>  (0x00007ffcb8127000)
         libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f788344d000)
         libltdl.so.7 => /usr/lib/x86_64-linux-gnu/libltdl.so.7 (0x00007f7883243000)
         libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f7882e78000)
         /lib64/ld-linux-x86-64.so.2 (0x0000560e85dcb000)
         libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f7882c74000)
+```
 2. Just copy it from host to the container.
-########################################################## 
+
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen.)
 
