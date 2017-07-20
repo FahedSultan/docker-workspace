@@ -111,11 +111,12 @@ Note: Instead of **777**, **ugo+x** may also be used in the above command to be 
    
 ## Commands to start/manage jenkins docker: 
 ```sh 
-$ docker run -p 9999:8080 -p 50000:50000 -v /home/<user_account>/docker-jenkinsvolume/jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -v $(which docker):/usr/bin/docker --name myjenkins veersudhir83/myjenkins:latest 
+$ docker run -p 8080:8080 -p 50000:50000 -v /home/<user_account>/docker-jenkinsvolume/jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -v $(which docker):/usr/bin/docker --name myjenkins veersudhir83/myjenkins:latest 
 ```
 **Important Note:** Be sure to point the -v and -p switches to the right ports, volumes etc..
 
-## Using Docker Swarm to deploy an application
+## Using Docker Swarm to deploy an application 
+- Reference Instructions at [swarmreference]
 ### Set up a Docker registry
 > Start the registry as a service on your swarm:
 ```sh
@@ -228,3 +229,4 @@ $ dpkg-reconfigure ca-certificates
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen.)
 
    [stackdemo]: <https://github.com/veersudhir83/docker-workspace/tree/master/stackdemo/>
+   [swarmreference]: <https://docs.docker.com/engine/swarm/stack-deploy/#deploy-the-stack-to-the-swarm/>
