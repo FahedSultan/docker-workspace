@@ -248,8 +248,12 @@ Where as the same command on the host running docker which not yield any errors 
         /lib64/ld-linux-x86-64.so.2 (0x0000560e85dcb000)
         libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f7882c74000)
 ```
-2. Just copy it from host to the container.
-
+2. Just copy it from host to the container along with symlink and physical files
+Example
+```sh
+$ docker cp  /usr/lib/x86_64-linux-gnu/libltdl.so.7.3.1 myjenkins:/lib/x86_64-linux-gnu/libltdl.so.7.3.1
+$ docker cp  /usr/lib/x86_64-linux-gnu/libltdl.so.7 myjenkins:/lib/x86_64-linux-gnu/libltdl.so.7
+```
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen.)
 
