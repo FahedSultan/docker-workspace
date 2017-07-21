@@ -69,7 +69,6 @@ jackson2-api:2.7.3
 pipeline-stage-view:2.8
 extensible-choice-parameter:1.4.0
 github-api:1.86
-cobertura:1.10
 ace-editor:1.1
 ant:1.5
 next-build-number:1.4
