@@ -1,0 +1,10 @@
+version: "3.0"
+services:
+  web:
+    image: 127.0.0.1:5000/devops-springboot-stack:latest
+    build: .
+    deploy:
+      replicas: 2
+    ports:
+      - "8091:8090"
+      - "8092:8092"
