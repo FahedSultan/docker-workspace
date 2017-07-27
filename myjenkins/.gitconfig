@@ -8,3 +8,4 @@ proxy = http://proxy-tvm.quest-global.com:8080
 [https]
 sslVerify = false
 proxy = http://proxy-tvm.quest-global.com:8080
+postBuffer = 15728640
