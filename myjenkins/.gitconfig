@@ -1,0 +1,10 @@
+[user]
+name = veersudhir83
+email = veersudhir83@gmail.com
+[http]
+sslVerify = false
+postBuffer = 15728640
+proxy = http://proxy-tvm.quest-global.com:8080
+[https]
+sslVerify = false
+proxy = http://proxy-tvm.quest-global.com:8080
