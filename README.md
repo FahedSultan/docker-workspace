@@ -122,6 +122,8 @@ $ docker run -p 8080:8080 -p 50000:50000 -v /home/<user_account>/docker-jenkinsv
 ```sh
 $ docker service create --name <name_of_registry> --publish 5000:5000 registry:2
 ```
+Once it reads 1/1 under REPLICAS, it’s running. If it reads 0/1, it’s probably still pulling the image; wait a little bit for it to pull the image.
+
 > Check the status of registry service
 ```sh
 $ docker service ls
