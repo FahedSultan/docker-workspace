@@ -8,6 +8,6 @@ FROM anapsix/alpine-java
 MAINTAINER "sudheer veeravalli <veersudhir83@gmail.com>"
 
 # Copy war file to tomcat webapps folder
-COPY devops-web.war /home/devops-web.war
+COPY devops-web-maven.jar /home/devops-web-maven.jar
 
-CMD ["java","-jar","/home/devops-web.war"]
+CMD ["java","-jar","/home/devops-web-maven.jar"]
