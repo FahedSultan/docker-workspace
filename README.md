@@ -14,7 +14,7 @@ $ docker run -p 4000:80 friendlyname --> Run "friendlyname" mapping port 4000 to
 $ docker run -d -p 4000:80 friendlyname --> Same thing, but in detached mode 
 ```
 ```sh 
-$ docker run -d -p friendlyname --> Map the port exposed by the container over a random available ip on the host 
+$ docker run -d -P friendlyname --> Map the port exposed by the container over a random available ip on the host 
 ```
 ```sh 
 $ docker ps  --> See a list of all running containers 
