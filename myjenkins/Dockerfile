@@ -1,4 +1,4 @@
-FROM jenkins:2.60.3
+FROM jenkins:2.60.1
 
 MAINTAINER Sudheer Veeravalli, https://github.com/veersudhir83
 
@@ -16,9 +16,14 @@ RUN apt-get update && apt-get -y install jq
 
 # Install necessary plugins
 #  Capture plugins list using
-#    curl "http://192.168.1.7:8080/pluginManager/api/json?depth=1" | jq -r '.plugins[].shortName'
-#    Or an even more extreme way from the container itself
-#    docker exec -it myjenkins ls /var/jenkins_home/plugins/ | grep -v jpi
+# $ With Versions:
+#   curl -sSL "http://<jenkins_user_name>:<jenkins_password>@<jenkins_url>:8080/pluginManager/api/xml?depth=1&xpath=/*/*/shortName|/*/*/version&wrapper=plugins" | perl -pe 's/.*?<shortName>([\w-]+).*?<version>([^<]+)()(<\/\w+>)+/\1 \2\n/g'|sed 's/ /:/'
+
+# $ Without Versions:
+#   1) curl "http://localhost:8080/pluginManager/api/json?depth=1" | jq -r '.plugins[].shortName'
+#   2) docker exec -it myjenkins ls /var/jenkins_home/plugins/ | grep -v jpi
+#   3) Using CLI: java -jar jenkins-cli.jar -s http://localhost:8080/ list-plugins
+
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
 RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
 
