@@ -14,7 +14,6 @@ pipeline-stage-tags-metadata:1.1.9
 git-client:2.5.0
 run-condition:1.0
 pipeline-model-definition:1.1.9
-codacy-plugin-jenkins:1.0-SNAPSHOT (private-16218bdb-root)
 durable-task:1.14
 subversion:2.9
 external-monitor-job:1.7
