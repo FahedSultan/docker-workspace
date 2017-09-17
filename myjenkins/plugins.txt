@@ -95,3 +95,4 @@ timestamper:1.8.8
 github:1.27.0
 github-oauth:0.27
 build-pipeline-plugin:1.5.7.1
+cobertura:1.11
