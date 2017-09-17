@@ -1,4 +1,4 @@
-FROM jenkins:2.60.1
+FROM jenkins:2.73.1
 
 MAINTAINER Sudheer Veeravalli, https://github.com/veersudhir83
 

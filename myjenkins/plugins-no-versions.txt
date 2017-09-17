@@ -93,3 +93,5 @@ resource-disposer
 workflow-job
 timestamper
 github
+github-oauth:0.27
+build-pipeline-plugin:1.5.7.1

@@ -93,3 +93,5 @@ resource-disposer:0.6
 workflow-job:2.12.1
 timestamper:1.8.8
 github:1.27.0
+github-oauth:0.27
+build-pipeline-plugin:1.5.7.1
