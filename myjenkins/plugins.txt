@@ -97,3 +97,4 @@ github-oauth:0.27
 build-pipeline-plugin:1.5.7.1
 cobertura:1.11
 htmlpublisher:1.14
+saferestart:0.3
