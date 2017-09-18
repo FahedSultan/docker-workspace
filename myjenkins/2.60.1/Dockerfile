@@ -5,10 +5,10 @@ MAINTAINER Sudheer Veeravalli, https://github.com/veersudhir83
 # If we want to install via apt
 # RUN apt-get update && apt-get install -y ruby make more-things-here
 USER root
-RUN apt-get update && apt-get -y install jq
+RUN apt-get update && apt-get -y install jq && apt-get install -y maven && apt-get install -y ant
 
 # If you want to get rid of admin password setup
-# ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
+ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
 
 # If you want to run this behind a proxy
 # ENV http_proxy 'http://proxy-tvm.quest-global.com:8080'
