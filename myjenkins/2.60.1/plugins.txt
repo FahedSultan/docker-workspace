@@ -98,3 +98,4 @@ build-pipeline-plugin:1.5.7.1
 htmlpublisher:1.14
 saferestart:0.3
 jacoco:2.2.1
+config-autorefresh-plugin:1.0
