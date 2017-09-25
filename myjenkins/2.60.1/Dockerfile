@@ -4,7 +4,7 @@ MAINTAINER Sudheer Veeravalli, https://github.com/veersudhir83
 
 # For Administrative tasks
 # USER root
-# RUN apt-get update && apt-get -y install jq
+# RUN apt-get update && apt-get -y upgrade && apt-get -y install --no-install-recommends jq
 
 # If you want to get rid of admin password setup
 ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
