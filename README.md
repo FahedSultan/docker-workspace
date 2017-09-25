@@ -204,8 +204,8 @@ $ [2017-06-29 09:32:41] root@test01  /home/edureka $ cat /etc/default/docker
  
   #If you need Docker to use an HTTP proxy, it can also be specified here. 
   #export http_proxy="http://127.0.0.1:3128/" 
-  export http_proxy="http://proxy-tvm.quest-global.com:8080" 
-  export https_proxy="http://proxy-tvm.quest-global.com:8080" 
+  export http_proxy="http://proxy-host:proxy-port:8080" 
+  export https_proxy="http://proxy-host:proxy-port:8080" 
 ```
   
 > If using Dockerfile - Add the following lines at the top of your Dockerfile: 
