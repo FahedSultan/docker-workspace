@@ -6,8 +6,8 @@ FROM ubuntu:latest
 
 MAINTAINER Sudheer Veeravalli, https://github.com/veersudhir83
 
-ENV http_proxy 'http://proxy-tvm.quest-global.com:8080' 
-ENV https_proxy 'http://proxy-tvm.quest-global.com:8080'
+#ENV http_proxy 'http://proxy-tvm.quest-global.com:8080'
+#ENV https_proxy 'http://proxy-tvm.quest-global.com:8080'
 
 RUN apt-get update && \
 
