@@ -10,10 +10,10 @@ MAINTAINER Sudheer Veeravalli, https://github.com/veersudhir83
 ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
 
 # If you want to run this behind a proxy
-# ENV http_proxy 'http://proxy-tvm.quest-global.com:8080'
-# ENV https_proxy 'http://proxy-tvm.quest-global.com:8080'
-# ENV HTTP_PROXY 'http://proxy-tvm.quest-global.com:8080'
-# ENV HTTPS_PROXY 'http://proxy-tvm.quest-global.com:8080'
+# ENV http_proxy 'http://proxy-host.proxy-port:8080'
+# ENV https_proxy 'http://proxy-host.proxy-port:8080'
+# ENV HTTP_PROXY 'http://proxy-host.proxy-port:8080'
+# ENV HTTPS_PROXY 'http://proxy-host.proxy-port:8080'
 
 # If you want to install any plugins automatically
 # COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
