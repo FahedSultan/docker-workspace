@@ -1,0 +1,25 @@
+If you are behind an HTTP or HTTPS proxy server, for example in corporate settings, 
+you will need to add this configuration in the Docker systemd service file.
+
+1. Create a systemd drop-in directory for the docker service and go into the directory
+   $ mkdir -p /etc/systemd/system/docker.service.d
+   $ cd /etc/systemd/system/docker.service.d
+
+2. Create a file called /etc/systemd/system/docker.service.d/http-proxy.conf that adds the HTTP_PROXY environment variable:
+   Contents of http-proxy.conf file
+   ********************************
+   [Service]
+   Environment="HTTP_PROXY=http://proxy-tvm.quest-global.com:8080/"
+
+3. Flush Changes
+   $ sudo systemctl daemon-reload
+
+4. Restart Docker
+   $ sudo systemctl restart docker
+
+5. Verify that configuration has been added
+   $ systemctl show --property=Environment docker
+   
+   Output of the command:
+   root@quest:/etc/systemd/system/docker.service.d# systemctl show --property=Environment docker
+   Environment=HTTP_PROXY=http://proxy-tvm.quest-global.com:8080/
