@@ -13,6 +13,14 @@ $ docker build -t myansible_control .
 ```sh
 $ docker run --rm --name myansible myansible_control:latest ansible -m ping local
 ```
+## Sample Output:
+<pre><font color="#00FF00"><b>osboxes@osboxes</b></font>:<font color="#5C5CFF"><b>~/ansible_image</b></font>$ docker run --rm --name myansible myansible:latest ansible -m ping local
+localhost | SUCCESS =&gt; {
+    &quot;changed&quot;: false, 
+    &quot;ping&quot;: &quot;pong&quot;
+}
+<font color="#00FF00"><b>osboxes@osboxes</b></font>:<font color="#5C5CFF"><b>~/ansible_image</b></font>$</pre>
+
 Note: local is the group name of nodes in the hosts file. Update the entry in your command as appropriate 
 
 ## Limitation: 
